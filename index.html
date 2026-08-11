@@ -1,0 +1,406 @@
+<!DOCTYPE html>
+<html lang="es-MX">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>ROOTZ Kitchen — Menú semanal a domicilio</title>
+<meta name="description" content="Rootz Kitchen: menú semanal, comida real lista en minutos. Elige tu paquete de meals y recibe en tu puerta.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Baloo+2:wght@500;600;700;800&family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="styles.css">
+</head>
+<body>
+
+<!-- ============ NAV ============ -->
+<nav class="nav" id="nav">
+  <div class="nav__inner">
+    <a href="#top" class="nav__logo">
+      <img src="assets/logo/logo-rootz.jpeg" alt="Rootz Kitchen">
+    </a>
+    <div class="nav__links">
+      <a href="#menu">Menú</a>
+      <a href="#paquetes">Paquetes</a>
+      <a href="#como-funciona">Cómo funciona</a>
+      <a href="#preguntas">Preguntas</a>
+    </div>
+    <div class="nav__cta">
+      <a href="#paquetes" class="btn btn--primary">Ordenar</a>
+    </div>
+  </div>
+</nav>
+
+<!-- ============ HERO ============ -->
+<header class="hero" id="top">
+  <div class="hero__blob hero__blob--1"></div>
+  <div class="hero__blob hero__blob--2"></div>
+  <div class="container hero__inner">
+    <div class="hero__text">
+      <span class="eyebrow">Menú semanal · Entrega los domingos</span>
+      <h1 class="hero__title">Come rico,<br>vive <span>fácil</span>.</h1>
+      <p class="hero__subtitle">Cada semana diseñamos un menú nuevo con desayunos, comidas y una selección del chef. Tú eliges cuántos meals quieres, nosotros los llevamos hasta tu puerta.</p>
+      <div class="hero__actions">
+        <a href="#paquetes" class="btn btn--primary btn--lg">Ver paquetes y ordenar</a>
+        <a href="#menu" class="btn btn--outline btn--lg">Ver menú de la semana</a>
+      </div>
+      <div class="hero__stats">
+        <div class="hero__stat"><strong data-count="8" data-prefix="+">0</strong><span>Platillos/semana</span></div>
+        <div class="hero__stat"><strong data-count="100" data-suffix="%">0</strong><span>Listo para comer</span></div>
+        <div class="hero__stat"><strong data-count="3">0</strong><span>Zonas de entrega</span></div>
+      </div>
+    </div>
+    <div class="hero__media">
+      <div class="hero__card">
+        <img src="assets/food/salsa-pour-marble.jpeg" alt="Meal Rootz Kitchen con salsa fresca">
+      </div>
+      <div class="hero__badge">
+        <div class="hero__badge-dot">Z</div>
+        <div><span>Empaque</span><strong>100% eco-friendly</strong></div>
+      </div>
+    </div>
+  </div>
+</header>
+
+<!-- ============ MARQUEE TICKER ============ -->
+<div class="marquee">
+  <div class="marquee__track">
+    <span>MENÚ NUEVO CADA SEMANA</span>
+    <span>·</span>
+    <span>ENTREGA LOS DOMINGOS</span>
+    <span>·</span>
+    <span>#EATROOTZ</span>
+    <span>·</span>
+    <span>DONDE COMIENZA EL CAMBIO</span>
+    <span>·</span>
+    <span>MENÚ NUEVO CADA SEMANA</span>
+    <span>·</span>
+    <span>ENTREGA LOS DOMINGOS</span>
+    <span>·</span>
+    <span>#EATROOTZ</span>
+    <span>·</span>
+    <span>DONDE COMIENZA EL CAMBIO</span>
+    <span>·</span>
+  </div>
+</div>
+
+<!-- ============ TRUST STRIP ============ -->
+<div class="container">
+  <div class="trust">
+    <div class="trust__item reveal"><div class="ico">🌱</div><strong>Ingredientes reales, sin procesados</strong></div>
+    <div class="trust__item reveal"><div class="ico">📦</div><strong>Empaque eco-friendly</strong></div>
+    <div class="trust__item reveal"><div class="ico">👨‍🍳</div><strong>Recetas creadas por chef</strong></div>
+    <div class="trust__item reveal"><div class="ico">🚗</div><strong>Entrega semanal a domicilio</strong></div>
+  </div>
+</div>
+
+<!-- ============ HOW IT WORKS ============ -->
+<section class="section section--tight" id="como-funciona">
+  <div class="container">
+    <div class="section-head">
+      <span class="eyebrow">Simple y sin complicaciones</span>
+      <h2>Cómo funciona</h2>
+    </div>
+    <div class="steps">
+      <div class="step reveal">
+        <div class="step__num">1</div>
+        <div><h3>Escoge</h3><p>Elige tu paquete de 5, 10 o 15 meals según cuánto quieras cubrir tu semana.</p></div>
+      </div>
+      <div class="step reveal" style="transition-delay:0.08s">
+        <div class="step__num">2</div>
+        <div><h3>Ordena</h3><p>Danos tu dirección y zona de entrega, confirma tu pedido en menos de 2 minutos.</p></div>
+      </div>
+      <div class="step reveal" style="transition-delay:0.16s">
+        <div class="step__num">3</div>
+        <div><h3>Recibe</h3><p>Tu box Rootz llega fresco a tu puerta, listo para calentar y disfrutar.</p></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ WEEKLY MENU ============ -->
+<section class="section" id="menu">
+  <div class="container">
+    <div class="menu-section reveal">
+      <div class="section-head">
+        <span class="eyebrow">Semana actual</span>
+        <h2>El menú de esta semana</h2>
+        <p>Cambiamos el menú cada semana. Estos son los platillos que están disponibles ahora, elegidos y preparados por nuestro chef.</p>
+      </div>
+
+      <div class="menu-tabs">
+        <button class="menu-tab is-active" data-tab="desayunos">Desayunos</button>
+        <button class="menu-tab" data-tab="comida">Comida</button>
+        <button class="menu-tab" data-tab="chef">Chef Selection</button>
+      </div>
+
+      <div class="menu-panels">
+        <div class="menu-panel is-active" id="panel-desayunos">
+          <div class="menu-card"><img src="assets/menu/desayunos.jpeg" alt="Desayunos de la semana: Muffins de plátano con blueberry, Omelette de Huitlacoche, Wrap de Pollo"></div>
+        </div>
+        <div class="menu-panel" id="panel-comida">
+          <div class="menu-card"><img src="assets/menu/comida.jpeg" alt="Comida de la semana: Teriyaki de res, Pollo a la diabla con arroz de brócoli, Arroz verde con pescado al limón"></div>
+        </div>
+        <div class="menu-panel" id="panel-chef">
+          <div class="menu-card"><img src="assets/menu/chef-selection.jpeg" alt="Chef Selection: Pasta de camarones, Bowl de salmón teriyaki, Bowl de camarones con aderezo de aguacate"></div>
+        </div>
+      </div>
+      <p class="menu-note">El menú se actualiza cada semana · Avísanos si tienes alguna alergia alimentaria</p>
+    </div>
+  </div>
+</section>
+
+<!-- ============ GALLERY ============ -->
+<section class="section section--tight">
+  <div class="container">
+    <div class="section-head">
+      <span class="eyebrow">#eatrootz</span>
+      <h2>Así llega tu Rootz</h2>
+    </div>
+    <div class="gallery">
+      <a class="gallery__feature reveal"><img src="assets/food/bowl-teriyaki-orange.jpeg" alt="Bowl teriyaki Rootz Kitchen"></a>
+      <a class="reveal" style="transition-delay:0.06s"><img src="assets/food/box-and-bowl-granite.jpeg" alt="Box Rootz junto a meal"></a>
+      <a class="reveal" style="transition-delay:0.12s"><img src="assets/food/omelette-dark.jpeg" alt="Omelette Rootz Kitchen"></a>
+      <a class="reveal" style="transition-delay:0.18s"><img src="assets/food/boxes-outdoor.jpeg" alt="Boxes Rootz Kitchen para llevar"></a>
+    </div>
+  </div>
+</section>
+
+<!-- ============ PACKAGES ============ -->
+<section class="section" id="paquetes">
+  <div class="container">
+    <div class="section-head">
+      <span class="eyebrow">Elige tu paquete</span>
+      <h2>¿Cuántos meals necesitas esta semana?</h2>
+      <p>Todos los paquetes incluyen desayunos, comidas y platillos de nuestra chef selection. Tú decides la mezcla cuando ordenas.</p>
+    </div>
+
+    <div class="packages" id="packages">
+      <div class="package reveal" data-id="5" data-name="Paquete Starter" data-meals="5" data-price="749">
+        <div class="package__top">
+          <div><div class="package__name">Starter</div><div class="package__meals">5 meals</div></div>
+          <div class="package__radio"></div>
+        </div>
+        <div class="package__price"><strong>$749</strong><span>MXN / semana</span></div>
+        <div class="package__per">$149.80 por meal</div>
+        <ul>
+          <li>5 meals a elegir del menú semanal</li>
+          <li>Ideal para probar Rootz</li>
+          <li>Entrega dominical</li>
+        </ul>
+      </div>
+
+      <div class="package is-selected reveal" style="transition-delay:0.08s" data-id="10" data-name="Paquete Balance" data-meals="10" data-price="1399">
+        <div class="package__badge">Más popular</div>
+        <div class="package__top">
+          <div><div class="package__name">Balance</div><div class="package__meals">10 meals</div></div>
+          <div class="package__radio"></div>
+        </div>
+        <div class="package__price"><strong>$1,399</strong><span>MXN / semana</span></div>
+        <div class="package__per">$139.90 por meal · ahorras $99</div>
+        <ul>
+          <li>10 meals a elegir del menú semanal</li>
+          <li>Cubre casi toda tu semana</li>
+          <li>Entrega dominical</li>
+        </ul>
+      </div>
+
+      <div class="package reveal" style="transition-delay:0.16s" data-id="15" data-name="Paquete Full Week" data-meals="15" data-price="1999">
+        <div class="package__badge">Mejor valor</div>
+        <div class="package__top">
+          <div><div class="package__name">Full Week</div><div class="package__meals">15 meals</div></div>
+          <div class="package__radio"></div>
+        </div>
+        <div class="package__price"><strong>$1,999</strong><span>MXN / semana</span></div>
+        <div class="package__per">$133.27 por meal · ahorras $248</div>
+        <ul>
+          <li>15 meals: desayuno, comida y cena</li>
+          <li>Toda tu semana resuelta</li>
+          <li>Entrega dominical</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ ORDER FORM ============ -->
+<section class="section" id="ordenar">
+  <div class="container">
+    <div class="section-head">
+      <span class="eyebrow">Último paso</span>
+      <h2>Arma tu pedido</h2>
+      <p>Confirma tu paquete, dirección de entrega y listo — te avisamos por WhatsApp cuando tu box vaya en camino.</p>
+    </div>
+
+    <div class="order-wrap" style="max-width:560px;margin:0 auto;">
+
+      <!-- Order summary -->
+      <div class="order-summary">
+        <div class="order-summary__row"><span id="summary-package">Paquete Balance · 10 meals</span><span id="summary-unit">$1,399</span></div>
+        <div class="order-summary__row">
+          <span>Cantidad de paquetes</span>
+          <div class="qty-stepper">
+            <button type="button" id="qty-minus" aria-label="Restar">–</button>
+            <span id="qty-value">1</span>
+            <button type="button" id="qty-plus" aria-label="Sumar">+</button>
+          </div>
+        </div>
+        <div class="order-summary__row"><span>Envío</span><span id="summary-envio">Selecciona tu zona</span></div>
+        <div class="order-summary__row total"><span>Total</span><span id="summary-total">$1,399 MXN</span></div>
+      </div>
+
+      <!-- Form -->
+      <form id="order-form">
+        <div class="divider-label">Tus datos</div>
+        <div class="form-row">
+          <div class="form-group">
+            <label for="f-name">Nombre completo</label>
+            <input type="text" id="f-name" name="nombre" placeholder="Ej. Ana García" required>
+          </div>
+          <div class="form-group">
+            <label for="f-phone">Teléfono / WhatsApp</label>
+            <input type="tel" id="f-phone" name="telefono" placeholder="55 1234 5678" required>
+          </div>
+        </div>
+        <div class="form-group">
+          <label for="f-email">Correo electrónico</label>
+          <input type="email" id="f-email" name="email" placeholder="tucorreo@email.com" required>
+        </div>
+
+        <div class="divider-label">Entrega</div>
+        <div class="form-group">
+          <label for="f-address">Dirección exacta</label>
+          <textarea id="f-address" name="direccion" placeholder="Calle, número, colonia, referencias..." required></textarea>
+        </div>
+        <div class="form-group">
+          <label>Zona de entrega</label>
+          <div class="zone-picker" id="zone-picker">
+            <div class="zone-card" data-zone="A" data-price="39">
+              <span class="zone-card__letter">A</span>
+              <span class="zone-card__areas">Bosques de las Lomas, Interlomas, Tecamachalco, Las Lomas</span>
+              <span class="zone-card__price">$39 MXN</span>
+            </div>
+            <div class="zone-card" data-zone="B" data-price="59">
+              <span class="zone-card__letter">B</span>
+              <span class="zone-card__areas">Roma, Condesa, Juárez, Polanco</span>
+              <span class="zone-card__price">$59 MXN</span>
+            </div>
+            <div class="zone-card" data-zone="C" data-price="79">
+              <span class="zone-card__letter">C</span>
+              <span class="zone-card__areas">Satélite, Portales, Del Valle, San Ángel</span>
+              <span class="zone-card__price">$79 MXN</span>
+            </div>
+          </div>
+          <p class="form-hint">¿No ves tu colonia en la lista? Escríbenos por WhatsApp y te confirmamos tu zona antes de tu entrega.</p>
+        </div>
+
+        <div class="divider-label">Pago</div>
+        <div class="payment-demo">
+          <span class="payment-demo__tag">Demo — pago real próximamente</span>
+          <div class="form-group">
+            <label for="f-card">Número de tarjeta</label>
+            <input type="text" id="f-card" placeholder="4242 4242 4242 4242" inputmode="numeric" maxlength="19">
+          </div>
+          <div class="form-row">
+            <div class="form-group">
+              <label for="f-exp">Vencimiento</label>
+              <input type="text" id="f-exp" placeholder="MM/AA" maxlength="5">
+            </div>
+            <div class="form-group">
+              <label for="f-cvv">CVV</label>
+              <input type="text" id="f-cvv" placeholder="123" inputmode="numeric" maxlength="4">
+            </div>
+          </div>
+        </div>
+
+        <button type="submit" class="btn btn--primary btn--block btn--lg" style="margin-top:22px;">Confirmar pedido</button>
+      </form>
+
+      <!-- Confirmation -->
+      <div class="confirm-panel" id="confirm-panel">
+        <div class="confirm-panel__icon">✓</div>
+        <h3>¡Pedido recibido!</h3>
+        <p>Esta es una demo — cuando activemos pagos reales, tu pedido quedará confirmado automáticamente. Te contactaremos por WhatsApp para coordinar tu entrega.</p>
+        <div class="confirm-panel__details">
+          <div><span>Paquete</span><span id="c-package">—</span></div>
+          <div><span>Cantidad</span><span id="c-qty">—</span></div>
+          <div><span>Zona</span><span id="c-colonia">—</span></div>
+          <div><span>Envío</span><span id="c-envio">—</span></div>
+          <div><span>Total</span><span id="c-total">—</span></div>
+        </div>
+        <button type="button" class="btn btn--outline btn--block" id="confirm-reset">Hacer otro pedido</button>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ FAQ ============ -->
+<section class="section" id="preguntas">
+  <div class="container">
+    <div class="section-head">
+      <span class="eyebrow">Preguntas frecuentes</span>
+      <h2>Todo lo que debes saber</h2>
+    </div>
+    <div class="faq" style="max-width:640px;margin:0 auto;">
+      <details class="faq-item" open>
+        <summary>¿Cuándo se entregan los pedidos?</summary>
+        <p>Hacemos entregas semanales los domingos. Los pedidos deben confirmarse antes del jueves para asegurar tu lugar en la ruta de esa semana.</p>
+      </details>
+      <details class="faq-item">
+        <summary>¿Cómo sé en qué zona estoy?</summary>
+        <p>Al ordenar eliges tu zona (A, B o C) según tu colonia, cada una con su tarifa fija de envío. Si no ves tu colonia en la lista, escríbenos por WhatsApp y te confirmamos cobertura.</p>
+      </details>
+      <details class="faq-item">
+        <summary>¿Puedo elegir qué meals quiero?</summary>
+        <p>Sí. Al confirmar tu paquete te compartimos el menú de la semana para que elijas tus platillos favoritos entre desayunos, comidas y chef selection.</p>
+      </details>
+      <details class="faq-item">
+        <summary>¿Tienen opciones para alergias?</summary>
+        <p>Por favor avísanos con anticipación si tienes alguna alergia alimentaria para ajustar tu pedido.</p>
+      </details>
+    </div>
+  </div>
+</section>
+
+<!-- ============ FOOTER ============ -->
+<footer class="footer">
+  <div class="container">
+    <div class="footer__logo">ROOTZ<span>.</span></div>
+    <div class="footer__tag">Donde comienza el cambio · #eatrootz</div>
+    <div class="footer__grid">
+      <div class="footer__col">
+        <h4>Contacto</h4>
+        <a href="https://wa.me/525514455349">WhatsApp: +52 1 55 1445 5349</a>
+        <a href="mailto:contacto@rootzkitchen.com.mx">contacto@rootzkitchen.com.mx</a>
+      </div>
+      <div class="footer__col">
+        <h4>Navegación</h4>
+        <a href="#menu">Menú semanal</a>
+        <a href="#paquetes">Paquetes</a>
+        <a href="#preguntas">Preguntas frecuentes</a>
+      </div>
+      <div class="footer__col">
+        <h4>Síguenos</h4>
+        <div class="footer__social">
+          <a href="#" aria-label="Instagram">IG</a>
+          <a href="#" aria-label="WhatsApp">WA</a>
+        </div>
+      </div>
+    </div>
+    <div class="footer__bottom">
+      <span>© 2026 Rootz Kitchen. Todos los derechos reservados.</span>
+      <span>Demo de landing page — pagos aún no habilitados.</span>
+    </div>
+  </div>
+</footer>
+
+<!-- ============ STICKY MOBILE CTA ============ -->
+<div class="sticky-cta" id="sticky-cta">
+  <div class="sticky-cta__inner">
+    <div class="sticky-cta__price"><span>Tu paquete</span><strong id="sticky-total">$1,399 MXN</strong></div>
+    <a href="#ordenar" class="btn btn--primary">Ordenar ahora</a>
+  </div>
+</div>
+
+<script src="script.js"></script>
+</body>
+</html>
