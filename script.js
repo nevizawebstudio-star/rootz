@@ -45,9 +45,9 @@
   var summaryEnvioEl = document.getElementById("summary-envio");
 
   var state = {
-    packageId: "10",
+    packageId: "12",
     packageName: "Paquete Balance",
-    meals: 10,
+    meals: 12,
     price: 1399,
     qty: 1,
     zone: null,
@@ -76,6 +76,7 @@
       state.meals = parseInt(el.dataset.meals, 10);
       state.price = parseInt(el.dataset.price, 10);
       refreshSummary();
+      resetDishSelection();
     });
   });
 
@@ -86,11 +87,88 @@
   }
 
   document.getElementById("qty-minus").addEventListener("click", function () {
-    if (state.qty > 1) { state.qty -= 1; refreshSummary(); bumpQty(); }
+    if (state.qty > 1) { state.qty -= 1; refreshSummary(); bumpQty(); resetDishSelection(); }
   });
   document.getElementById("qty-plus").addEventListener("click", function () {
-    if (state.qty < 10) { state.qty += 1; refreshSummary(); bumpQty(); }
+    if (state.qty < 10) { state.qty += 1; refreshSummary(); bumpQty(); resetDishSelection(); }
   });
+
+  /* ---------- Dish builder (weekly menu selection) ---------- */
+  var dishRows = document.querySelectorAll(".dish-row");
+  var dishCounts = {};
+  dishRows.forEach(function (row) { dishCounts[row.dataset.dish] = 0; });
+
+  var dishProgressWrap = document.getElementById("dish-progress");
+  var dishProgressFill = document.getElementById("dish-progress-fill");
+  var dishProgressCount = document.getElementById("dish-progress-count");
+  var dishProgressTotal = document.getElementById("dish-progress-total");
+  var submitBtn = document.getElementById("submit-btn");
+
+  function requiredMeals() {
+    return state.meals * state.qty;
+  }
+
+  function totalSelectedDishes() {
+    return Object.keys(dishCounts).reduce(function (sum, id) { return sum + dishCounts[id]; }, 0);
+  }
+
+  function updateDishProgress() {
+    var required = requiredMeals();
+    var selected = totalSelectedDishes();
+    var complete = selected === required;
+
+    dishProgressCount.textContent = selected;
+    dishProgressTotal.textContent = required;
+    dishProgressFill.style.width = (required ? Math.min(100, (selected / required) * 100) : 0) + "%";
+    dishProgressWrap.classList.toggle("is-complete", complete);
+    if (submitBtn) submitBtn.disabled = !complete;
+
+    dishRows.forEach(function (row) {
+      var plusBtn = row.querySelector(".dish-plus");
+      var minusBtn = row.querySelector(".dish-minus");
+      var id = row.dataset.dish;
+      plusBtn.disabled = selected >= required;
+      minusBtn.disabled = dishCounts[id] === 0;
+    });
+  }
+
+  function resetDishSelection() {
+    dishRows.forEach(function (row) {
+      dishCounts[row.dataset.dish] = 0;
+      row.querySelector(".dish-qty").textContent = "0";
+    });
+    updateDishProgress();
+  }
+
+  dishRows.forEach(function (row) {
+    var id = row.dataset.dish;
+    var qtyEl = row.querySelector(".dish-qty");
+    row.querySelector(".dish-minus").addEventListener("click", function () {
+      if (dishCounts[id] > 0) {
+        dishCounts[id] -= 1;
+        qtyEl.textContent = dishCounts[id];
+        updateDishProgress();
+      }
+    });
+    row.querySelector(".dish-plus").addEventListener("click", function () {
+      if (totalSelectedDishes() < requiredMeals()) {
+        dishCounts[id] += 1;
+        qtyEl.textContent = dishCounts[id];
+        updateDishProgress();
+      }
+    });
+  });
+
+  function buildDishSummary() {
+    var parts = [];
+    dishRows.forEach(function (row) {
+      var id = row.dataset.dish;
+      if (dishCounts[id] > 0) {
+        parts.push(dishCounts[id] + "× " + row.querySelector(".dish-row__name").textContent);
+      }
+    });
+    return parts.join(", ");
+  }
 
   /* ---------- Delivery zone selection ---------- */
   var ZONE_LABEL = { A: "Zona A", B: "Zona B", C: "Zona C" };
@@ -108,6 +186,7 @@
   });
 
   refreshSummary();
+  updateDishProgress();
 
   /* ---------- Card number formatting (demo only) ---------- */
   var cardInput = document.getElementById("f-card");
@@ -128,6 +207,11 @@
   form.addEventListener("submit", function (e) {
     e.preventDefault();
 
+    if (totalSelectedDishes() !== requiredMeals()) {
+      document.getElementById("dish-builder").scrollIntoView({ behavior: "smooth", block: "center" });
+      return;
+    }
+
     if (!state.zone) {
       document.getElementById("zone-picker").scrollIntoView({ behavior: "smooth", block: "center" });
       return;
@@ -138,6 +222,7 @@
 
     document.getElementById("c-package").textContent = state.packageName + " (" + state.meals + " meals)";
     document.getElementById("c-qty").textContent = state.qty + " paquete" + (state.qty > 1 ? "s" : "");
+    document.getElementById("c-dishes").textContent = buildDishSummary();
     document.getElementById("c-colonia").textContent = state.coloniaName;
     document.getElementById("c-envio").textContent = money(state.envio) + " MXN";
     document.getElementById("c-total").textContent = money(total) + " MXN";
@@ -157,6 +242,7 @@
     state.coloniaBlocked = false;
     zoneCards.forEach(function (z) { z.classList.remove("is-selected"); });
     refreshSummary();
+    resetDishSelection();
     document.getElementById("ordenar").scrollIntoView({ behavior: "smooth" });
   });
 

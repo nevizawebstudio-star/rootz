@@ -103,7 +103,7 @@
     <div class="steps">
       <div class="step reveal">
         <div class="step__num">1</div>
-        <div><h3>Escoge</h3><p>Elige tu paquete de 5, 10 o 15 meals según cuánto quieras cubrir tu semana.</p></div>
+        <div><h3>Escoge</h3><p>Elige tu paquete de 6, 12 o 15 meals según cuánto quieras cubrir tu semana.</p></div>
       </div>
       <div class="step reveal" style="transition-delay:0.08s">
         <div class="step__num">2</div>
@@ -175,43 +175,43 @@
     </div>
 
     <div class="packages" id="packages">
-      <div class="package reveal" data-id="5" data-name="Paquete Starter" data-meals="5" data-price="749">
+      <div class="package reveal" data-id="6" data-name="Paquete Starter" data-meals="6" data-price="749">
         <div class="package__top">
-          <div><div class="package__name">Starter</div><div class="package__meals">5 meals</div></div>
+          <div><div class="package__name">Starter</div><div class="package__meals">6 meals</div></div>
           <div class="package__radio"></div>
         </div>
         <div class="package__price"><strong>$749</strong><span>MXN / semana</span></div>
-        <div class="package__per">$149.80 por meal</div>
+        <div class="package__per">$124.83 por meal</div>
         <ul>
-          <li>5 meals a elegir del menú semanal</li>
+          <li>6 meals a elegir del menú semanal</li>
           <li>Ideal para probar Rootz</li>
           <li>Entrega dominical</li>
         </ul>
       </div>
 
-      <div class="package is-selected reveal" style="transition-delay:0.08s" data-id="10" data-name="Paquete Balance" data-meals="10" data-price="1399">
+      <div class="package is-selected reveal" style="transition-delay:0.08s" data-id="12" data-name="Paquete Balance" data-meals="12" data-price="1399">
         <div class="package__badge">Más popular</div>
         <div class="package__top">
-          <div><div class="package__name">Balance</div><div class="package__meals">10 meals</div></div>
+          <div><div class="package__name">Balance</div><div class="package__meals">12 meals</div></div>
           <div class="package__radio"></div>
         </div>
         <div class="package__price"><strong>$1,399</strong><span>MXN / semana</span></div>
-        <div class="package__per">$139.90 por meal · ahorras $99</div>
+        <div class="package__per">$116.58 por meal · ahorras $99</div>
         <ul>
-          <li>10 meals a elegir del menú semanal</li>
+          <li>12 meals a elegir del menú semanal</li>
           <li>Cubre casi toda tu semana</li>
           <li>Entrega dominical</li>
         </ul>
       </div>
 
       <div class="package reveal" style="transition-delay:0.16s" data-id="15" data-name="Paquete Full Week" data-meals="15" data-price="1999">
-        <div class="package__badge">Mejor valor</div>
+        <div class="package__badge">Semana completa</div>
         <div class="package__top">
           <div><div class="package__name">Full Week</div><div class="package__meals">15 meals</div></div>
           <div class="package__radio"></div>
         </div>
         <div class="package__price"><strong>$1,999</strong><span>MXN / semana</span></div>
-        <div class="package__per">$133.27 por meal · ahorras $248</div>
+        <div class="package__per">$133.27 por meal</div>
         <ul>
           <li>15 meals: desayuno, comida y cena</li>
           <li>Toda tu semana resuelta</li>
@@ -235,7 +235,7 @@
 
       <!-- Order summary -->
       <div class="order-summary">
-        <div class="order-summary__row"><span id="summary-package">Paquete Balance · 10 meals</span><span id="summary-unit">$1,399</span></div>
+        <div class="order-summary__row"><span id="summary-package">Paquete Balance · 12 meals</span><span id="summary-unit">$1,399</span></div>
         <div class="order-summary__row">
           <span>Cantidad de paquetes</span>
           <div class="qty-stepper">
@@ -250,6 +250,100 @@
 
       <!-- Form -->
       <form id="order-form">
+        <div class="divider-label">Arma tu semana</div>
+        <p class="form-hint" style="margin-top:-8px;margin-bottom:14px;">Elige libremente entre desayunos, comidas y chef selection — tú decides la mezcla, hasta completar tus meals.</p>
+
+        <div class="dish-builder" id="dish-builder">
+          <div class="dish-category">
+            <div class="dish-category__title">Desayunos</div>
+            <div class="dish-row" data-dish="des-muffins">
+              <span class="dish-row__name">Muffins de plátano con blueberry</span>
+              <div class="dish-stepper">
+                <button type="button" class="dish-minus" aria-label="Restar">–</button>
+                <span class="dish-qty">0</span>
+                <button type="button" class="dish-plus" aria-label="Sumar">+</button>
+              </div>
+            </div>
+            <div class="dish-row" data-dish="des-omelette">
+              <span class="dish-row__name">Omelette de huitlacoche</span>
+              <div class="dish-stepper">
+                <button type="button" class="dish-minus" aria-label="Restar">–</button>
+                <span class="dish-qty">0</span>
+                <button type="button" class="dish-plus" aria-label="Sumar">+</button>
+              </div>
+            </div>
+            <div class="dish-row" data-dish="des-wrap">
+              <span class="dish-row__name">Wrap de pollo</span>
+              <div class="dish-stepper">
+                <button type="button" class="dish-minus" aria-label="Restar">–</button>
+                <span class="dish-qty">0</span>
+                <button type="button" class="dish-plus" aria-label="Sumar">+</button>
+              </div>
+            </div>
+          </div>
+
+          <div class="dish-category">
+            <div class="dish-category__title">Comida</div>
+            <div class="dish-row" data-dish="com-teriyaki">
+              <span class="dish-row__name">Teriyaki de res</span>
+              <div class="dish-stepper">
+                <button type="button" class="dish-minus" aria-label="Restar">–</button>
+                <span class="dish-qty">0</span>
+                <button type="button" class="dish-plus" aria-label="Sumar">+</button>
+              </div>
+            </div>
+            <div class="dish-row" data-dish="com-diabla">
+              <span class="dish-row__name">Pollo a la diabla con arroz de brócoli</span>
+              <div class="dish-stepper">
+                <button type="button" class="dish-minus" aria-label="Restar">–</button>
+                <span class="dish-qty">0</span>
+                <button type="button" class="dish-plus" aria-label="Sumar">+</button>
+              </div>
+            </div>
+            <div class="dish-row" data-dish="com-arrozverde">
+              <span class="dish-row__name">Arroz verde con pescado a limón</span>
+              <div class="dish-stepper">
+                <button type="button" class="dish-minus" aria-label="Restar">–</button>
+                <span class="dish-qty">0</span>
+                <button type="button" class="dish-plus" aria-label="Sumar">+</button>
+              </div>
+            </div>
+          </div>
+
+          <div class="dish-category">
+            <div class="dish-category__title">Chef Selection</div>
+            <div class="dish-row" data-dish="chef-pasta">
+              <span class="dish-row__name">Pasta con camarones</span>
+              <div class="dish-stepper">
+                <button type="button" class="dish-minus" aria-label="Restar">–</button>
+                <span class="dish-qty">0</span>
+                <button type="button" class="dish-plus" aria-label="Sumar">+</button>
+              </div>
+            </div>
+            <div class="dish-row" data-dish="chef-salmon">
+              <span class="dish-row__name">Bowl de salmón teriyaki</span>
+              <div class="dish-stepper">
+                <button type="button" class="dish-minus" aria-label="Restar">–</button>
+                <span class="dish-qty">0</span>
+                <button type="button" class="dish-plus" aria-label="Sumar">+</button>
+              </div>
+            </div>
+            <div class="dish-row" data-dish="chef-camarones">
+              <span class="dish-row__name">Bowl de camarones con aderezo de aguacate</span>
+              <div class="dish-stepper">
+                <button type="button" class="dish-minus" aria-label="Restar">–</button>
+                <span class="dish-qty">0</span>
+                <button type="button" class="dish-plus" aria-label="Sumar">+</button>
+              </div>
+            </div>
+          </div>
+
+          <div class="dish-progress" id="dish-progress">
+            <div class="dish-progress__bar"><div class="dish-progress__fill" id="dish-progress-fill"></div></div>
+            <div class="dish-progress__label"><span id="dish-progress-count">0</span> de <span id="dish-progress-total">12</span> meals seleccionados</div>
+          </div>
+        </div>
+
         <div class="divider-label">Tus datos</div>
         <div class="form-row">
           <div class="form-group">
@@ -312,7 +406,7 @@
           </div>
         </div>
 
-        <button type="submit" class="btn btn--primary btn--block btn--lg" style="margin-top:22px;">Confirmar pedido</button>
+        <button type="submit" class="btn btn--primary btn--block btn--lg" id="submit-btn" style="margin-top:22px;" disabled>Confirmar pedido</button>
       </form>
 
       <!-- Confirmation -->
@@ -323,6 +417,7 @@
         <div class="confirm-panel__details">
           <div><span>Paquete</span><span id="c-package">—</span></div>
           <div><span>Cantidad</span><span id="c-qty">—</span></div>
+          <div><span>Tu menú</span><span id="c-dishes">—</span></div>
           <div><span>Zona</span><span id="c-colonia">—</span></div>
           <div><span>Envío</span><span id="c-envio">—</span></div>
           <div><span>Total</span><span id="c-total">—</span></div>
