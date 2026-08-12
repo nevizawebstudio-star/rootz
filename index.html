@@ -103,7 +103,7 @@
     <div class="steps">
       <div class="step reveal">
         <div class="step__num">1</div>
-        <div><h3>Escoge</h3><p>Elige tu paquete de 6, 12 o 15 meals según cuánto quieras cubrir tu semana.</p></div>
+        <div><h3>Escoge</h3><p>Elige tu paquete de 6, 12 o 15 meals, o personaliza tu propia cantidad según cuánto quieras cubrir tu semana.</p></div>
       </div>
       <div class="step reveal" style="transition-delay:0.08s">
         <div class="step__num">2</div>
@@ -171,7 +171,7 @@
     <div class="section-head">
       <span class="eyebrow">Elige tu paquete</span>
       <h2>¿Cuántos meals necesitas esta semana?</h2>
-      <p>Todos los paquetes incluyen desayunos, comidas y platillos de nuestra chef selection. Tú decides la mezcla cuando ordenas.</p>
+      <p>Todos los paquetes incluyen desayunos, comidas y platillos de nuestra chef selection. Tú decides la mezcla cuando ordenas — o arma tu propia cantidad con "A tu gusto".</p>
     </div>
 
     <div class="packages" id="packages">
@@ -218,6 +218,21 @@
           <li>Entrega dominical</li>
         </ul>
       </div>
+
+      <div class="package package--custom reveal" style="transition-delay:0.24s" data-id="custom" data-name="Personaliza tu semana" data-meals="1" data-price="145">
+        <div class="package__badge">Flexible</div>
+        <div class="package__top">
+          <div><div class="package__name">A tu gusto</div><div class="package__meals">Desde 3 meals</div></div>
+          <div class="package__radio"></div>
+        </div>
+        <div class="package__price"><strong>$145</strong><span>MXN / meal</span></div>
+        <div class="package__per">Tú decides cuántos meals quieres</div>
+        <ul>
+          <li>Elige la cantidad exacta que necesitas</li>
+          <li>Mezcla libre entre desayuno, comida y chef selection</li>
+          <li>Ideal si tu semana varía</li>
+        </ul>
+      </div>
     </div>
   </div>
 </section>
@@ -237,7 +252,7 @@
       <div class="order-summary">
         <div class="order-summary__row"><span id="summary-package">Paquete Balance · 12 meals</span><span id="summary-unit">$1,399</span></div>
         <div class="order-summary__row">
-          <span>Cantidad de paquetes</span>
+          <span id="qty-label">Cantidad de paquetes</span>
           <div class="qty-stepper">
             <button type="button" id="qty-minus" aria-label="Restar">–</button>
             <span id="qty-value">1</span>

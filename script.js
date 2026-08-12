@@ -43,6 +43,10 @@
   var stickyTotalEl = document.getElementById("sticky-total");
 
   var summaryEnvioEl = document.getElementById("summary-envio");
+  var qtyLabelEl = document.getElementById("qty-label");
+
+  var CUSTOM_MIN = 3;
+  var CUSTOM_MAX = 20;
 
   var state = {
     packageId: "12",
@@ -56,15 +60,24 @@
     coloniaBlocked: false
   };
 
+  function isCustom() {
+    return state.packageId === "custom";
+  }
+
+  function mealsCount() {
+    return isCustom() ? state.qty : state.meals;
+  }
+
   function refreshSummary() {
     var subtotal = state.price * state.qty;
     var total = subtotal + (state.envio || 0);
-    summaryPackageEl.textContent = state.packageName + " · " + state.meals + " meals";
-    summaryUnitEl.textContent = money(state.price);
+    summaryPackageEl.textContent = state.packageName + " · " + mealsCount() + " meals";
+    summaryUnitEl.textContent = money(state.price) + (isCustom() ? " / meal" : "");
     summaryEnvioEl.textContent = state.coloniaName ? (money(state.envio) + " MXN") : "Selecciona tu zona";
     summaryTotalEl.textContent = money(total) + " MXN";
     stickyTotalEl.textContent = money(total) + " MXN";
     qtyValueEl.textContent = state.qty;
+    qtyLabelEl.textContent = isCustom() ? "Cantidad de meals" : "Cantidad de paquetes";
   }
 
   packageEls.forEach(function (el) {
@@ -75,6 +88,11 @@
       state.packageName = el.dataset.name;
       state.meals = parseInt(el.dataset.meals, 10);
       state.price = parseInt(el.dataset.price, 10);
+      if (isCustom()) {
+        state.qty = Math.max(state.qty, CUSTOM_MIN);
+      } else {
+        state.qty = Math.min(state.qty, 10);
+      }
       refreshSummary();
       resetDishSelection();
     });
@@ -87,10 +105,12 @@
   }
 
   document.getElementById("qty-minus").addEventListener("click", function () {
-    if (state.qty > 1) { state.qty -= 1; refreshSummary(); bumpQty(); resetDishSelection(); }
+    var min = isCustom() ? CUSTOM_MIN : 1;
+    if (state.qty > min) { state.qty -= 1; refreshSummary(); bumpQty(); resetDishSelection(); }
   });
   document.getElementById("qty-plus").addEventListener("click", function () {
-    if (state.qty < 10) { state.qty += 1; refreshSummary(); bumpQty(); resetDishSelection(); }
+    var max = isCustom() ? CUSTOM_MAX : 10;
+    if (state.qty < max) { state.qty += 1; refreshSummary(); bumpQty(); resetDishSelection(); }
   });
 
   /* ---------- Dish builder (weekly menu selection) ---------- */
@@ -105,7 +125,7 @@
   var submitBtn = document.getElementById("submit-btn");
 
   function requiredMeals() {
-    return state.meals * state.qty;
+    return isCustom() ? state.qty : state.meals * state.qty;
   }
 
   function totalSelectedDishes() {
@@ -220,8 +240,10 @@
     var subtotal = state.price * state.qty;
     var total = subtotal + state.envio;
 
-    document.getElementById("c-package").textContent = state.packageName + " (" + state.meals + " meals)";
-    document.getElementById("c-qty").textContent = state.qty + " paquete" + (state.qty > 1 ? "s" : "");
+    document.getElementById("c-package").textContent = state.packageName + " (" + mealsCount() + " meals)";
+    document.getElementById("c-qty").textContent = isCustom()
+      ? (state.qty + " meal" + (state.qty > 1 ? "s" : ""))
+      : (state.qty + " paquete" + (state.qty > 1 ? "s" : ""));
     document.getElementById("c-dishes").textContent = buildDishSummary();
     document.getElementById("c-colonia").textContent = state.coloniaName;
     document.getElementById("c-envio").textContent = money(state.envio) + " MXN";

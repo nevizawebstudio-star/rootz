@@ -514,6 +514,8 @@ h1, h2, h3, h4 {
   border-color: var(--red);
   box-shadow: var(--shadow-card);
 }
+.package--custom { border-style: dashed; }
+.package--custom.is-selected { border-style: solid; }
 .package__badge {
   position: absolute;
   top: -12px;
@@ -1098,8 +1100,8 @@ h1, h2, h3, h4 {
   .menu-card { max-width: 300px; }
   .menu-list { text-align: left; max-width: 380px; }
 
-  .packages { flex-direction: row; }
-  .package { flex: 1; }
+  .packages { flex-direction: row; flex-wrap: wrap; }
+  .package { flex: 1 1 220px; }
 
   .gallery { grid-template-columns: repeat(5, 1fr); }
   .gallery a:first-child img, .gallery__feature { grid-column: span 2; height: 260px !important; }
