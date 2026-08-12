@@ -45,7 +45,7 @@
   var summaryEnvioEl = document.getElementById("summary-envio");
   var qtyLabelEl = document.getElementById("qty-label");
 
-  var CUSTOM_MIN = 3;
+  var CUSTOM_MIN = 1;
   var CUSTOM_MAX = 20;
 
   var state = {
