@@ -401,44 +401,14 @@
           </div>
           <p class="form-hint">¿No ves tu colonia en la lista? Escríbenos por WhatsApp y te confirmamos tu zona antes de tu entrega.</p>
         </div>
-
-        <div class="divider-label">Pago</div>
-        <div class="payment-demo">
-          <span class="payment-demo__tag">Demo — pago real próximamente</span>
-          <div class="form-group">
-            <label for="f-card">Número de tarjeta</label>
-            <input type="text" id="f-card" placeholder="4242 4242 4242 4242" inputmode="numeric" maxlength="19">
-          </div>
-          <div class="form-row">
-            <div class="form-group">
-              <label for="f-exp">Vencimiento</label>
-              <input type="text" id="f-exp" placeholder="MM/AA" maxlength="5">
-            </div>
-            <div class="form-group">
-              <label for="f-cvv">CVV</label>
-              <input type="text" id="f-cvv" placeholder="123" inputmode="numeric" maxlength="4">
-            </div>
-          </div>
+        <div class="form-group">
+          <label for="f-notes">Notas / alergias (opcional)</label>
+          <textarea id="f-notes" name="notas" placeholder="Ej. alérgico a mariscos, sin cebolla, dejar con el portero..."></textarea>
         </div>
 
-        <button type="submit" class="btn btn--primary btn--block btn--lg" id="submit-btn" style="margin-top:22px;" disabled>Confirmar pedido</button>
+        <button type="submit" class="btn btn--primary btn--block btn--lg" id="submit-btn" style="margin-top:22px;" disabled>Ir a pagar</button>
+        <p class="form-hint" id="submit-error" style="display:none;color:var(--red);text-align:center;margin-top:10px;"></p>
       </form>
-
-      <!-- Confirmation -->
-      <div class="confirm-panel" id="confirm-panel">
-        <div class="confirm-panel__icon">✓</div>
-        <h3>¡Pedido recibido!</h3>
-        <p>Esta es una demo — cuando activemos pagos reales, tu pedido quedará confirmado automáticamente. Te contactaremos por WhatsApp para coordinar tu entrega.</p>
-        <div class="confirm-panel__details">
-          <div><span>Paquete</span><span id="c-package">—</span></div>
-          <div><span>Cantidad</span><span id="c-qty">—</span></div>
-          <div><span>Tu menú</span><span id="c-dishes">—</span></div>
-          <div><span>Zona</span><span id="c-colonia">—</span></div>
-          <div><span>Envío</span><span id="c-envio">—</span></div>
-          <div><span>Total</span><span id="c-total">—</span></div>
-        </div>
-        <button type="button" class="btn btn--outline btn--block" id="confirm-reset">Hacer otro pedido</button>
-      </div>
     </div>
   </div>
 </section>

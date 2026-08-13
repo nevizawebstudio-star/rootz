@@ -208,24 +208,22 @@
   refreshSummary();
   updateDishProgress();
 
-  /* ---------- Card number formatting (demo only) ---------- */
-  var cardInput = document.getElementById("f-card");
-  cardInput.addEventListener("input", function () {
-    var digits = cardInput.value.replace(/\D/g, "").slice(0, 16);
-    cardInput.value = digits.replace(/(.{4})/g, "$1 ").trim();
-  });
-  var expInput = document.getElementById("f-exp");
-  expInput.addEventListener("input", function () {
-    var digits = expInput.value.replace(/\D/g, "").slice(0, 4);
-    expInput.value = digits.length > 2 ? digits.slice(0, 2) + "/" + digits.slice(2) : digits;
-  });
-
-  /* ---------- Order submit (demo) ---------- */
+  /* ---------- Order submit → Stripe Checkout ---------- */
   var form = document.getElementById("order-form");
-  var confirmPanel = document.getElementById("confirm-panel");
+  var submitErrorEl = document.getElementById("submit-error");
+
+  function showSubmitError(msg) {
+    submitErrorEl.textContent = msg;
+    submitErrorEl.style.display = "block";
+  }
+
+  function hideSubmitError() {
+    submitErrorEl.style.display = "none";
+  }
 
   form.addEventListener("submit", function (e) {
     e.preventDefault();
+    hideSubmitError();
 
     if (totalSelectedDishes() !== requiredMeals()) {
       document.getElementById("dish-builder").scrollIntoView({ behavior: "smooth", block: "center" });
@@ -237,35 +235,46 @@
       return;
     }
 
-    var subtotal = state.price * state.qty;
-    var total = subtotal + state.envio;
+    var payload = {
+      packageId: state.packageId,
+      qty: state.qty,
+      zone: state.zone,
+      dishes: dishCounts,
+      customer: {
+        name: document.getElementById("f-name").value,
+        phone: document.getElementById("f-phone").value,
+        email: document.getElementById("f-email").value,
+        address: document.getElementById("f-address").value,
+        notes: document.getElementById("f-notes").value
+      }
+    };
 
-    document.getElementById("c-package").textContent = state.packageName + " (" + mealsCount() + " meals)";
-    document.getElementById("c-qty").textContent = isCustom()
-      ? (state.qty + " meal" + (state.qty > 1 ? "s" : ""))
-      : (state.qty + " paquete" + (state.qty > 1 ? "s" : ""));
-    document.getElementById("c-dishes").textContent = buildDishSummary();
-    document.getElementById("c-colonia").textContent = state.coloniaName;
-    document.getElementById("c-envio").textContent = money(state.envio) + " MXN";
-    document.getElementById("c-total").textContent = money(total) + " MXN";
+    submitBtn.disabled = true;
+    var originalBtnText = submitBtn.textContent;
+    submitBtn.textContent = "Redirigiendo a pago...";
 
-    form.style.display = "none";
-    confirmPanel.classList.add("is-visible");
-    confirmPanel.scrollIntoView({ behavior: "smooth", block: "center" });
-  });
-
-  document.getElementById("confirm-reset").addEventListener("click", function () {
-    form.reset();
-    form.style.display = "block";
-    confirmPanel.classList.remove("is-visible");
-    state.zone = null;
-    state.envio = 0;
-    state.coloniaName = "";
-    state.coloniaBlocked = false;
-    zoneCards.forEach(function (z) { z.classList.remove("is-selected"); });
-    refreshSummary();
-    resetDishSelection();
-    document.getElementById("ordenar").scrollIntoView({ behavior: "smooth" });
+    fetch("/api/create-checkout-session", {
+      method: "POST",
+      headers: { "Content-Type": "application/json" },
+      body: JSON.stringify(payload)
+    })
+      .then(function (r) {
+        return r.json().then(function (data) { return { ok: r.ok, data: data }; });
+      })
+      .then(function (result) {
+        if (result.ok && result.data && result.data.url) {
+          window.location.href = result.data.url;
+          return;
+        }
+        showSubmitError((result.data && result.data.error) || "No se pudo iniciar el pago. Intenta de nuevo.");
+        submitBtn.disabled = false;
+        submitBtn.textContent = originalBtnText;
+      })
+      .catch(function () {
+        showSubmitError("No se pudo conectar. Revisa tu internet e intenta de nuevo.");
+        submitBtn.disabled = false;
+        submitBtn.textContent = originalBtnText;
+      });
   });
 
   /* ---------- Scroll reveal ---------- */

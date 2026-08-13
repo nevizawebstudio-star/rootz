@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="es-MX">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>¡Pago confirmado! — ROOTZ Kitchen</title>
+<meta name="robots" content="noindex">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Baloo+2:wght@500;600;700;800&family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="styles.css">
+<style>
+  .result-page { min-height: 100vh; display: flex; align-items: center; justify-content: center; padding: 32px 16px; }
+  .result-card { max-width: 480px; width: 100%; }
+  .result-logo { display: block; margin: 0 auto 22px; height: 40px; }
+</style>
+</head>
+<body>
+  <div class="result-page">
+    <div class="order-wrap result-card">
+      <a href="/"><img class="result-logo" src="assets/logo/logo-rootz.jpeg" alt="Rootz Kitchen"></a>
+      <div class="confirm-panel is-visible">
+        <div class="confirm-panel__icon">✓</div>
+        <h3 id="result-title">¡Pago confirmado!</h3>
+        <p id="result-message">Gracias por tu pedido. En breve te contactamos por WhatsApp para confirmar tu entrega del domingo.</p>
+        <div class="confirm-panel__details" id="order-details" style="display:none;">
+          <div><span>Paquete</span><span id="d-package">—</span></div>
+          <div><span>Meals</span><span id="d-meals">—</span></div>
+          <div><span>Zona</span><span id="d-zone">—</span></div>
+          <div><span>Total pagado</span><span id="d-total">—</span></div>
+        </div>
+        <a href="/" class="btn btn--outline btn--block" style="margin-top:18px;">Volver al inicio</a>
+      </div>
+    </div>
+  </div>
+
+  <script>
+    (function () {
+      "use strict";
+      var params = new URLSearchParams(window.location.search);
+      var sessionId = params.get("session_id");
+      if (!sessionId) return;
+
+      fetch("/api/session-info?session_id=" + encodeURIComponent(sessionId))
+        .then(function (r) { return r.json(); })
+        .then(function (data) {
+          if (!data || data.error) return;
+
+          if (data.status !== "complete" && data.payment_status !== "paid") {
+            document.getElementById("result-title").textContent = "Estamos confirmando tu pago...";
+            document.getElementById("result-message").textContent = "Esto puede tardar unos segundos. Si el cargo se realizó, te contactaremos por WhatsApp en breve.";
+            return;
+          }
+
+          var m = data.metadata || {};
+          if (m.package_name) {
+            document.getElementById("order-details").style.display = "block";
+            document.getElementById("d-package").textContent = m.package_name || "—";
+            document.getElementById("d-meals").textContent = (m.meals_count || "—") + " meals";
+            document.getElementById("d-zone").textContent = m.zone ? ("Zona " + m.zone) : "—";
+            document.getElementById("d-total").textContent = "$" + Number(m.total_mxn || 0).toLocaleString("es-MX") + " MXN";
+          }
+        })
+        .catch(function () { /* si falla, se queda el mensaje genérico */ });
+    })();
+  </script>
+</body>
+</html>

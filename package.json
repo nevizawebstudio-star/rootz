@@ -1,0 +1,9 @@
+{
+  "name": "rootz-kitchen-landing",
+  "private": true,
+  "version": "1.0.0",
+  "description": "Landing page de Rootz Kitchen con pagos via Stripe Checkout",
+  "dependencies": {
+    "stripe": "^22.5.0"
+  }
+}

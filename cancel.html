@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="es-MX">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Pago cancelado — ROOTZ Kitchen</title>
+<meta name="robots" content="noindex">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Baloo+2:wght@500;600;700;800&family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="styles.css">
+<style>
+  .result-page { min-height: 100vh; display: flex; align-items: center; justify-content: center; padding: 32px 16px; }
+  .result-card { max-width: 480px; width: 100%; }
+  .result-logo { display: block; margin: 0 auto 22px; height: 40px; }
+  .confirm-panel__icon--cancel { background: var(--ink-soft); }
+</style>
+</head>
+<body>
+  <div class="result-page">
+    <div class="order-wrap result-card">
+      <a href="/"><img class="result-logo" src="assets/logo/logo-rootz.jpeg" alt="Rootz Kitchen"></a>
+      <div class="confirm-panel is-visible">
+        <div class="confirm-panel__icon confirm-panel__icon--cancel">✕</div>
+        <h3>Pago cancelado</h3>
+        <p>No se realizó ningún cargo. Cuando quieras, puedes volver a armar tu pedido e intentar de nuevo.</p>
+        <a href="/#ordenar" class="btn btn--primary btn--block">Volver a intentar</a>
+      </div>
+    </div>
+  </div>
+</body>
+</html>
